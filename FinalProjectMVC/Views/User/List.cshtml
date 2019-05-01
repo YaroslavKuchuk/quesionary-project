@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FinalProject.Models.ViewModels.UserViewModel>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <p>Имя</p>
+
+            </td>
+            <td><p>Фамилия</p></td>
+        </tr>
+
+        @{
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FirstName  </td>
+                    <td>@user.LastName  </td>
+                    <td>
+                        @Html.ActionLink("Удалить", "Delete", routeValues: new { id = user.Id })
+                    </td>
+
+                </tr>
+            }
+        }
+    </table>
+    <br />
+    <br />
+    <p>@Html.ActionLink("Вернуться назад", "Index", "User")</p>
+</body>
+</html>

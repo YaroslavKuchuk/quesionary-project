@@ -1,0 +1,39 @@
+﻿@model FinalProject.EFLayer.DataModels.User
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @using (Html.BeginForm("Add", "User", FormMethod.Post))
+    {
+        <p>Введите название курса</p>
+        <p>@Html.Label("Введите имя")</p>
+        @Html.TextBoxFor(m => m.FirstName)
+
+        <p>@Html.Label("Введите фамилию")</p>
+        @Html.TextBoxFor(m => m.LastName)
+
+
+        <p>@Html.Label("Введите логин")</p>
+        @Html.TextBoxFor(m => m.Login)
+
+        <p>@Html.Label("Введите пароль")</p>
+        @Html.TextBoxFor(m => m.Password)
+
+
+
+        <p>@Html.Label("Введите свою роль")</p>
+        @Html.DropDownList("role", new SelectList(new[] { "Student", "Teacher", "Administrator" }))
+        <input type="submit" value="Отправить" />
+    }
+    <br />
+    <br />
+    <p>@Html.ActionLink("Вернуться назад", "Index", "User")</p>
+</body>
+</html>

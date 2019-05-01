@@ -1,0 +1,22 @@
+﻿@model IEnumerable<FinalProject.Models.ViewModels.TeacherViewModel>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    @{ 
+        foreach (var teacher in Model)
+        {
+            <ul>
+                <li>@teacher.CoursesList</li>
+            </ul>
+        }
+    }
+</body>
+</html>
