@@ -10,9 +10,8 @@ namespace FinalProject.DataLayer.Repositories
         private List<User> usersEF;
         public List<User> GetUsersList()
         {
-            var context = new FinalProjectDBEntities1();
-            //using (var context = new FinalProjectDBEntities1())
-            //{
+            using (var context = new FinalProjectDBEntities1())
+            {
 
             usersEF = context.Users
                     .Include("Teachers")
@@ -24,7 +23,7 @@ namespace FinalProject.DataLayer.Repositories
 
             ListInitialization();
             return userList;
-            // }
+            }
         }
 
         public void AddUser(User user, string role)
@@ -70,6 +69,11 @@ namespace FinalProject.DataLayer.Repositories
             }
         }
 
+        public User GetUserByLogin(string login)
+        {
+            var users = GetUsersList();
+            return users.FirstOrDefault(x => x.Login == login);
+        }
 
         private void ListInitialization()
         {

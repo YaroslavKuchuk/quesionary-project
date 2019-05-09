@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FinalProjectDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FinalProjectDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Id" />
@@ -95,6 +95,16 @@
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="GroupId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="Id" />
@@ -136,7 +146,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="QuestionId" Type="int" />
-          <Property Name="Textbox" Type="nvarchar(max)" />
+          <Property Name="TextBox" Type="nvarchar(max)" />
           <Property Name="IsCorrect" Type="int" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -153,12 +163,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nchar" MaxLength="10" />
-          <Property Name="LastName" Type="nchar" MaxLength="10" />
-          <Property Name="Login" Type="nchar" MaxLength="10" />
-          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="UserType">
@@ -169,6 +179,18 @@
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <Association Name="FK__User__UserTypeId__07C12930">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Admin_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
@@ -445,18 +467,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_UserType">
-          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="UserTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="FinalProjectDBModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
@@ -468,6 +478,7 @@
           <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentGroup" EntityType="Self.StudentGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherGroup" EntityType="Self.TeacherGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
@@ -476,6 +487,10 @@
           <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__User__UserTypeId__07C12930" Association="Self.FK__User__UserTypeId__07C12930">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
             <End Role="User" EntitySet="User" />
             <End Role="Admin" EntitySet="Admin" />
@@ -568,13 +583,8 @@
             <End Role="Module" EntitySet="Module" />
             <End Role="Theme" EntitySet="Theme" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
-            <End Role="UserType" EntitySet="UserType" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FinalProjectDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -719,10 +729,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" />
-          <Property Name="Textbox" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsCorrect" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Question" Relationship="Self.FK_TextAnswer_Question" FromRole="TextAnswer" ToRole="Question" />
+          <Property Name="TextBox" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Theme">
           <Key>
@@ -740,10 +750,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserTypeId" Type="Int32" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_User" FromRole="User" ToRole="Admin" />
@@ -1088,7 +1098,18 @@
             <End Role="Group" EntitySet="Groups" />
             <End Role="Teacher" EntitySet="Teachers" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="FinalProjectDBModel.sysdiagram" />
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1210,9 +1231,9 @@
           <EntitySetMapping Name="TextAnswers">
             <EntityTypeMapping TypeName="FinalProjectDBModel.TextAnswer">
               <MappingFragment StoreEntitySet="TextAnswer">
+                <ScalarProperty Name="TextBox" ColumnName="TextBox" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-                <ScalarProperty Name="Textbox" ColumnName="Textbox" />
                 <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
@@ -1274,6 +1295,17 @@
               <ScalarProperty Name="Id" ColumnName="TeacherId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FinalProjectDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

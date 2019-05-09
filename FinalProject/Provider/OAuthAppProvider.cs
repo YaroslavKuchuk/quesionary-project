@@ -1,7 +1,7 @@
-﻿using FinalProject.Repositories;
-using Microsoft.Owin.Security.OAuth;
+﻿using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FinalProject.DataLayer.Repositories;
 
 namespace FinalProject.Provider
 {
@@ -18,9 +18,9 @@ namespace FinalProject.Provider
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
             var authRepository = new UserRepository();
-            var isValid = authRepository.Get(context.UserName, context.Password);
+            var user = authRepository.GetUserByLogin(context.UserName);
 
-            if (isValid == null)
+            if (user == null || user.Password != context.Password)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
                 return;

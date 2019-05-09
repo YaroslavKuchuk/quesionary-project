@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\VSProjects\Alevel\FinalProject\FinalProject.EFLayer\DataModels\EFData.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\GraduationProject\quesionary-project\FinalProject.EFLayer\DataModels\EFData.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
