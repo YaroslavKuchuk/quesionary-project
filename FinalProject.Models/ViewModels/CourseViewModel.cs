@@ -14,7 +14,6 @@ namespace FinalProject.Models.ViewModels
        
         public int Id { get; set; }
 
-
         [Required(ErrorMessage = "Введите название курса")]       
         public string Name { get; set; }
 
@@ -24,7 +23,11 @@ namespace FinalProject.Models.ViewModels
 
         public List<GroupDto> groupsList { get; set; }
 
-        public CourseViewModel() { }
+        public CourseViewModel() {
+            teachersList = new List<TeacherDto>();
+            modulesList = new List<ModuleDto>();
+            groupsList = new List<GroupDto>();
+        }
 
         public CourseViewModel(CourseDto courseDto)
         {
