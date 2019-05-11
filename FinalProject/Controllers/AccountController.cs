@@ -26,7 +26,12 @@ namespace FinalProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                return BadRequest(ModelState);
+            }
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                return CreateErrorResponse(HttpStatusCode.Unauthorized, "Password do not mat");
             }
 
             var authRepository = new UserService();
