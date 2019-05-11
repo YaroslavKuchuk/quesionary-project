@@ -26,8 +26,7 @@ namespace FinalProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var ret = BadRequest(ModelState);
-                return ret;
+                return CreateResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
             var authRepository = new UserService();
@@ -40,7 +39,7 @@ namespace FinalProject.Controllers
             };
             authRepository.Add(user, "Студент");
 
-            return CreateResponse(HttpStatusCode.Created); 
+            return CreateResponse(HttpStatusCode.Created);
         }
 
         // POST api/Account/Logout
@@ -52,7 +51,7 @@ namespace FinalProject.Controllers
         }
 
         //method only for test
-       [AllowAnonymous]
+        [AllowAnonymous]
         [Route("Getall")]
         public IHttpActionResult Getall()
         {
