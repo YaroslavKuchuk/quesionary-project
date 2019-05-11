@@ -9,7 +9,8 @@ using FinalProject.BusinessLogic.Services;
 using FinalProject.DataLayer.Repositories;
 using FinalProject.EFLayer.DataModels;
 using FinalProject.Models;
-
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 
 namespace FinalProject.Controllers
 {
@@ -17,6 +18,8 @@ namespace FinalProject.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+
+        //post
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(UserVM model)
@@ -40,9 +43,16 @@ namespace FinalProject.Controllers
             return CreateResponse(HttpStatusCode.Created); 
         }
 
+        // POST api/Account/Logout
+        [Route("Logout")]
+        public IHttpActionResult Logout()
+        {
+            Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
+            return CreateResponse(HttpStatusCode.OK, "Logout successful.");
+        }
 
         //method only for test
-        [AllowAnonymous]
+       [AllowAnonymous]
         [Route("Getall")]
         public IHttpActionResult Getall()
         {
@@ -81,5 +91,7 @@ namespace FinalProject.Controllers
             HttpResponseMessage responseMsg = Request.CreateErrorResponse(statusCode, message);
             return ResponseMessage(responseMsg);
         }
+
+        private IAuthenticationManager Authentication => Request.GetOwinContext().Authentication;
     }
 }
