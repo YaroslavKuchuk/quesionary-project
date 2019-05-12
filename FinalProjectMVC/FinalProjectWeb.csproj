@@ -134,8 +134,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GroupController.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CourseVm.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CreateCourseVm.cs" />
+    <Compile Include="Areas\Admin\Models\Groups\CreateGroupVm.cs" />
+    <Compile Include="Areas\Admin\Models\Groups\GroupVm.cs" />
     <Compile Include="Areas\Lecture\LectureAreaRegistration.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -173,6 +176,9 @@
     <Content Include="Areas\Admin\Views\Course\GetAll.cshtml" />
     <Content Include="Areas\Admin\Views\Course\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Course\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\GetAll.cshtml" />
+    <Content Include="Areas\Admin\Views\Group\Details.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -215,7 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\Groups\" />
     <Folder Include="Areas\Admin\Models\Modules\" />
     <Folder Include="Areas\Admin\Models\Teachers\" />
     <Folder Include="Areas\Lecture\Controllers\" />
