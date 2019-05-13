@@ -135,6 +135,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CourseVm.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CreateCourseVm.cs" />
     <Compile Include="Areas\Admin\Models\Groups\CreateGroupVm.cs" />
@@ -223,6 +224,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\Modules\" />
     <Folder Include="Areas\Admin\Models\Teachers\" />
+    <Folder Include="Areas\Admin\Views\Module\" />
     <Folder Include="Areas\Lecture\Controllers\" />
     <Folder Include="Areas\Lecture\Models\" />
     <Folder Include="Areas\Lecture\Views\Shared\" />

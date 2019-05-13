@@ -1,5 +1,4 @@
-﻿using FinalProject.Models.ViewModels;
-using FinalProjectMVC.Areas.Admin.Models.Courses;
+﻿using FinalProjectMVC.Areas.Admin.Models.Courses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +36,7 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var model = new CourseViewModel();
+            var model = new DetailsCourseVm();
             model.Name = "TestCourse";
             return View(model);
         }

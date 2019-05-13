@@ -1,5 +1,4 @@
-﻿using FinalProject.Models.ViewModels;
-using FinalProjectMVC.Areas.Admin.Models.Groups;
+﻿using FinalProjectMVC.Areas.Admin.Models.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +7,16 @@ using System.Web.Mvc;
 
 namespace FinalProjectMVC.Areas.Admin.Controllers
 {
-    public class GroupController : Controller
+    public class ModuleController : Controller
     {
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new CreateGroupVm();
+            var model = new CreateModuleVm();
             return View(model);
         }
         [HttpPost]
-        public ActionResult Create(CreateGroupVm vm)
+        public ActionResult Create(CreateModuleVm vm)
         {
             return View();
         }
@@ -25,15 +24,15 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            var models = new List<GroupVm>();
+            var models = new List<ModuleVm>();
             return View(models);
         }
 
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var model = new DetailsGroupVm();
-            model.Name = "TestGroup";
+            var model = new DetailsModuleVm();
+            model.Name = "TestModule";
             return View(model);
         }
 
