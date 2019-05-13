@@ -18,6 +18,12 @@ namespace FinalProject.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        private IUserService _authRepository;
+
+        public AccountController()
+        {
+            _authRepository = new UserService();
+        }
 
         //post
         [AllowAnonymous]
@@ -31,10 +37,11 @@ namespace FinalProject.Controllers
 
             if (model.Password != model.ConfirmPassword)
             {
-                return CreateErrorResponse(HttpStatusCode.Unauthorized, "Password do not mat");
+                return CreateErrorResponse(HttpStatusCode.Unauthorized, "Password do not match");
             }
 
             var authRepository = new UserService();
+
             var user = new User
             {
                 Login = model.Login,
@@ -60,8 +67,7 @@ namespace FinalProject.Controllers
         [Route("Getall")]
         public IHttpActionResult Getall()
         {
-            var authRepository = new UserService();
-            var usersDB = authRepository.GetUserList();
+            var usersDB = _authRepository.GetUserList();
             List<UserVM> users = new List<UserVM>();
             foreach (var u in usersDB)
             {
