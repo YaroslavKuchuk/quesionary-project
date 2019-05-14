@@ -13,11 +13,11 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new CreateGroupVm();
+            var model = new GroupVm();
             return View(model);
         }
         [HttpPost]
-        public ActionResult Create(CreateGroupVm vm)
+        public ActionResult Create(GroupVm vm)
         {
             return View();
         }
@@ -43,8 +43,15 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPut]
+        [HttpGet]
         public ActionResult Edit(int id)
+        {
+            GroupVm vm = new GroupVm();
+            return View(vm);
+        }
+
+        [HttpPut]
+        public ActionResult Edit(GroupVm vm)
         {
             return View();
         }

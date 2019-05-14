@@ -12,11 +12,11 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new CreateModuleVm();
+            var model = new ModuleVm();
             return View(model);
         }
         [HttpPost]
-        public ActionResult Create(CreateModuleVm vm)
+        public ActionResult Create(ModuleVm vm)
         {
             return View();
         }
@@ -42,8 +42,15 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPut]
+        [HttpGet]
         public ActionResult Edit(int id)
+        {
+            ModuleVm vm = new ModuleVm();
+            return View(vm);
+        }
+
+        [HttpPut]
+        public ActionResult Edit(ModuleVm vm)
         {
             return View();
         }
