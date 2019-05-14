@@ -41,6 +41,7 @@
         <AssociationConnector Association="FinalProjectDBModel.CourseTeacher" ManuallyRouted="false" />
         <AssociationConnector Association="FinalProjectDBModel.StudentGroup" ManuallyRouted="false" />
         <AssociationConnector Association="FinalProjectDBModel.TeacherGroup" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FinalProjectDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
