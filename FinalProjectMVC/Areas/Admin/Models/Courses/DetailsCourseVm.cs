@@ -22,9 +22,9 @@ namespace FinalProjectMVC.Areas.Admin.Models.Courses
 
         public DetailsCourseVm()
         {
-            teachersList = new List<TeacherVm>();
-            modulesList = new List<ModuleVm>();
-            groupsList = new List<GroupVm>();
+            teachersList = new List<TeacherVm> { new TeacherVm { FirstName = "TeacherFN", LastName = "TeacherLN"} };
+            modulesList = new List<ModuleVm> { new ModuleVm { Name = "Module 1"} };
+            groupsList = new List<GroupVm> { new GroupVm { Name = "Group 1"} };
         }
     }
 }

@@ -89,6 +89,9 @@
     <Compile Include="DataModels\Student.cs">
       <DependentUpon>EFData.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\sysdiagram.cs">
+      <DependentUpon>EFData.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\Teacher.cs">
       <DependentUpon>EFData.tt</DependentUpon>
     </Compile>

@@ -137,9 +137,16 @@
     <Compile Include="Areas\Admin\Controllers\GroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CourseVm.cs" />
-    <Compile Include="Areas\Admin\Models\Courses\CreateCourseVm.cs" />
-    <Compile Include="Areas\Admin\Models\Groups\CreateGroupVm.cs" />
+    <Compile Include="Areas\Admin\Models\Courses\DetailsCourseVm.cs" />
+    <Compile Include="Areas\Admin\Models\Groups\DetailsGroupVm.cs" />
     <Compile Include="Areas\Admin\Models\Groups\GroupVm.cs" />
+    <Compile Include="Areas\Admin\Models\Modules\CreateModuleVm.cs" />
+    <Compile Include="Areas\Admin\Models\Modules\DetailsModuleVm.cs" />
+    <Compile Include="Areas\Admin\Models\Modules\ModuleVm.cs" />
+    <Compile Include="Areas\Admin\Models\Questions\QuestionVm.cs" />
+    <Compile Include="Areas\Admin\Models\Student\StudentVm.cs" />
+    <Compile Include="Areas\Admin\Models\Teachers\TeacherVm.cs" />
+    <Compile Include="Areas\Admin\Models\Themes\ThemeVm.cs" />
     <Compile Include="Areas\Lecture\LectureAreaRegistration.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -180,6 +187,7 @@
     <Content Include="Areas\Admin\Views\Group\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Group\GetAll.cshtml" />
     <Content Include="Areas\Admin\Views\Group\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\Edit.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -222,8 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\Modules\" />
-    <Folder Include="Areas\Admin\Models\Teachers\" />
     <Folder Include="Areas\Admin\Views\Module\" />
     <Folder Include="Areas\Lecture\Controllers\" />
     <Folder Include="Areas\Lecture\Models\" />

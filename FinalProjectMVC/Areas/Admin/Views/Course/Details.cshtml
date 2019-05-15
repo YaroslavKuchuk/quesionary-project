@@ -1,34 +1,30 @@
-﻿@model FinalProject.Models.ViewModels.CourseViewModel
+﻿@model FinalProjectMVC.Areas.Admin.Models.Courses.DetailsCourseVm
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Детали @Html.DisplayFor(model => model.Name)</h2>
 
 <div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name):
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
+    <h4>Группы</h4>
     <ul>
-        <li><h4>@Html.DisplayNameFor(model => model.groupsList)</h4></li>
         @foreach (var item in Model.groupsList)
         {
             <li>@item.Name</li>
         }
-        <li><h4>@Html.DisplayNameFor(model => model.teachersList)</h4></li>
+    </ul>
+    <h4>Лекторы</h4>
+    <ul>
         @foreach (var item in Model.teachersList)
         {
             <li>@item.FirstName  @item.LastName</li>
         }
-        <li><h4>@Html.DisplayNameFor(model => model.modulesList)</h4></li>
+    </ul>
+    <h4>Модули</h4>
+    <ul>
         @foreach (var item in Model.modulesList)
         {
             <li>@item.Name</li>
@@ -37,5 +33,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "GetAll")
 </p>

@@ -1,4 +1,6 @@
-﻿using FinalProjectMVC.Areas.Admin.Models.Courses;
+﻿using FinalProject.BusinessLogic.Services;
+using FinalProject.EFLayer.DataModels;
+using FinalProjectMVC.Areas.Admin.Models.Courses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,18 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
 {
     public class CourseController : Controller
     {
+        private static int _count = 2;
+        private List<CourseVm> models = new List<CourseVm> {
+            new CourseVm{
+                Id = 0,
+                Name = "Course 1"
+            },
+            new CourseVm{
+                Id = 1,
+                Name = "Course 2"
+            }
+        };
+
         public ActionResult Index()
         {
             return View();
@@ -23,41 +37,50 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(CourseVm vm)
         {
-            return View();
+            vm.Id = _count++;
+            models.Add(vm);
+            return RedirectToAction("GetAll");
         }
 
         [HttpGet]
         public ActionResult GetAll()
         {
-            var models = new List<CourseVm>();
             return View(models);
         }
 
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var model = new DetailsCourseVm();
-            model.Name = "TestCourse";
+            var vm = models.FirstOrDefault(m => m.Id == id);
+            var model = new DetailsCourseVm {
+                Id = vm.Id,
+                Name = vm.Name
+            };
             return View(model);
         }
 
-        [HttpDelete]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            var vm = models.FirstOrDefault(m => m.Id == id);
+            models.Remove(vm);
+            return RedirectToAction("GetAll");
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            CourseVm vm = new CourseVm();
+            var vm = models.FirstOrDefault(m => m.Id == id);
             return View(vm);
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult Edit(CourseVm vm)
         {
-            return View();
+            var model = models.FirstOrDefault(m => m.Id == vm.Id);
+            models.Remove(model);
+            models.Add(vm);
+            return RedirectToAction("GetAll");
         }
     }
 }
