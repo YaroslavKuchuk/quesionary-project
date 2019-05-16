@@ -15,5 +15,13 @@ namespace FinalProjectMVC.Areas.Admin.Models.Groups
         public string CourseName { get; set; }
         public virtual List<StudentVm> Students { get; set; }
         public virtual List<TeacherVm> Teachers { get; set; }
+
+        public DetailsGroupVm()
+        {
+            Students = new List<StudentVm> { new StudentVm { FirstName = "StudentFN", LastName = "TeacherLN"  } };
+            Teachers = new List<TeacherVm> { new TeacherVm { FirstName = "TeacherFN", LastName = "TeacherLN" } };
+            CourseName = "Course 1";
+            BeginigDate = DateTime.Now;
+        }
     }
 }

@@ -23,11 +23,6 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
             }
         };
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Create()
         {
