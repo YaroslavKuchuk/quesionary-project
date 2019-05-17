@@ -9,6 +9,18 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
 {
     public class ModuleController : Controller
     {
+        private static int _count = 2;
+        private List<ModuleVm> models = new List<ModuleVm> {
+            new ModuleVm{
+                Id = 0,
+                Name = "Module 1"
+            },
+            new ModuleVm{
+                Id = 1,
+                Name = "Module 2"
+            }
+        };
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -18,7 +30,9 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(ModuleVm vm)
         {
-            return View();
+            vm.Id = _count++;
+            models.Add(vm);
+            return RedirectToAction("GetAll");
         }
 
         [HttpGet]
@@ -31,28 +45,37 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var model = new DetailsModuleVm();
-            model.Name = "TestModule";
+            var vm = models.FirstOrDefault(m => m.Id == id);
+            var model = new DetailsModuleVm
+            {
+                Id = vm.Id,
+                Name = vm.Name
+            };
             return View(model);
         }
 
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            return View();
+            var vm = models.FirstOrDefault(m => m.Id == id);
+            models.Remove(vm);
+            return RedirectToAction("GetAll");
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ModuleVm vm = new ModuleVm();
+            var vm = models.FirstOrDefault(m => m.Id == id);
             return View(vm);
         }
 
         [HttpPut]
         public ActionResult Edit(ModuleVm vm)
         {
-            return View();
+            var model = models.FirstOrDefault(m => m.Id == vm.Id);
+            models.Remove(model);
+            models.Add(vm);
+            return RedirectToAction("GetAll");
         }
     }
 }
