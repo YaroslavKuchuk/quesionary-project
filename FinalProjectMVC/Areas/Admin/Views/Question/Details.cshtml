@@ -1,0 +1,57 @@
+﻿@model FinalProjectMVC.Areas.Admin.Models.Questions.DetailsQuestionVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetailsQuestionVm</h4>
+    <hr />
+
+    <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+
+    @Html.DisplayFor(model => model.Name)
+
+    <h4>@Html.DisplayNameFor(model => model.Text)</h4>
+
+    @Html.DisplayFor(model => model.Text)
+
+    <h4>@Html.DisplayNameFor(model => model.ModuleName)</h4>
+
+    @Html.DisplayFor(model => model.ModuleName)
+
+    <h4>@Html.DisplayNameFor(model => model.QuestionType)</h4>
+
+    @Html.DisplayFor(model => model.QuestionType)
+
+    <h4>>@Html.DisplayNameFor(model => model.TestName)</h4>
+
+    @Html.DisplayFor(model => model.TestName)
+
+    <h4>@Html.DisplayNameFor(model => model.ThemeName)</h4>
+
+    @Html.DisplayFor(model => model.ThemeName)
+
+    <h4>Answers:</h4>
+    <ul>
+        @foreach (var item in Model.MultichoiceAnswers)
+        {
+            <li>@item.Name</li>
+            <li>@item.Text</li>
+        }
+    </ul>
+    <h4>AnswersText:</h4>
+    <ul>
+        @foreach (var item in Model.TextAnswers)
+        {
+            <li>@item.Name</li>
+            <li>@item.Text</li>
+        }
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

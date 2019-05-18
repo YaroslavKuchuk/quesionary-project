@@ -137,12 +137,16 @@
     <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionController.cs" />
+    <Compile Include="Areas\Admin\Models\Answers\MultichoiceAnswerVm.cs" />
+    <Compile Include="Areas\Admin\Models\Answers\TextAnswerVm.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CourseVm.cs" />
     <Compile Include="Areas\Admin\Models\Courses\DetailsCourseVm.cs" />
     <Compile Include="Areas\Admin\Models\Groups\DetailsGroupVm.cs" />
     <Compile Include="Areas\Admin\Models\Groups\GroupVm.cs" />
     <Compile Include="Areas\Admin\Models\Modules\DetailsModuleVm.cs" />
     <Compile Include="Areas\Admin\Models\Modules\ModuleVm.cs" />
+    <Compile Include="Areas\Admin\Models\Questions\DetailsQuestionVm.cs" />
     <Compile Include="Areas\Admin\Models\Questions\QuestionVm.cs" />
     <Compile Include="Areas\Admin\Models\Student\StudentVm.cs" />
     <Compile Include="Areas\Admin\Models\Teachers\TeacherVm.cs" />
@@ -193,6 +197,10 @@
     <Content Include="Areas\Admin\Views\Module\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Module\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Module\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\GetAll.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Question\Edit.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
