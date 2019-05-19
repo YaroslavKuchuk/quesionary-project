@@ -1,6 +1,4 @@
-﻿using FinalProject.BusinessLogic.Services;
-using FinalProject.EFLayer.DataModels;
-using FinalProjectMVC.Areas.Admin.Models.Courses;
+﻿using FinalProjectMVC.Areas.Admin.Models.Themes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,28 +7,28 @@ using System.Web.Mvc;
 
 namespace FinalProjectMVC.Areas.Admin.Controllers
 {
-    public class CourseController : Controller
+    public class ThemeController : Controller
     {
         private static int _count = 2;
-        private List<CourseVm> models = new List<CourseVm> {
-            new CourseVm{
+        private List<ThemeVm> models = new List<ThemeVm> {
+            new ThemeVm{
                 Id = 0,
-                Name = "Course 1"
+                Name = "Theme 1"
             },
-            new CourseVm{
+            new ThemeVm{
                 Id = 1,
-                Name = "Course 2"
+                Name = "Theme 2"
             }
         };
 
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new CourseVm();
+            var model = new ThemeVm();
             return View(model);
         }
         [HttpPost]
-        public ActionResult Create(CourseVm vm)
+        public ActionResult Create(ThemeVm vm)
         {
             vm.Id = _count++;
             models.Add(vm);
@@ -47,13 +45,17 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             var vm = models.FirstOrDefault(m => m.Id == id);
-            var model = new DetailsCourseVm {
+            var model = new DetailsThemeVm
+            {
                 Id = vm.Id,
                 Name = vm.Name,
-                lectorsList = new List<Models.Lector.LectorVm> { new Models.Lector.LectorVm { FirstName = "LectorFN", LastName = "LectorLN" } },
-                modulesList = new List<Models.Modules.ModuleVm> { new Models.Modules.ModuleVm { Name = "Module 1" } },
-                groupsList = new List<Models.Groups.GroupVm> { new Models.Groups.GroupVm { Name = "Group 1" } },
-        };
+                ModuleName = "Module 1",
+                Questions = new List<Models.Questions.QuestionVm> { new Models.Questions.QuestionVm { Id = 0, Name = "Qwestion 1", Text = "Lorem ipsum dolor sit amet, " +
+                "consectetur adipiscing elit. Vestibulum nulla eros, pellentesque in laoreet vitae, imperdiet non ligula. " +
+                "Pellentesque nec orci vitae nisl semper ultricies vitae ac justo. Etiam congue sit amet nisi sed commodo. Ut pretium interdum enim id vulputate. " +
+                "Etiam mattis mauris et purus viverra tempor. Donec facilisis faucibus risus et gravida. Etiam lobortis, ante a ultricies fermentum, " +
+                "metus metus pulvinar nulla, id iaculis tellus ipsum ut nisl. Maecenas ac nibh sit amet nisi blandit pulvinar at ac dolor."} }
+            };
             return View(model);
         }
 
@@ -73,7 +75,7 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(CourseVm vm)
+        public ActionResult Edit(ThemeVm vm)
         {
             var model = models.FirstOrDefault(m => m.Id == vm.Id);
             models.Remove(model);

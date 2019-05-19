@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FinalProjectMVC.Areas.Admin.Models.Teachers
+namespace FinalProjectMVC.Areas.Admin.Models.Lector
 {
-    public class TeacherVm
+    public class LectorVm
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

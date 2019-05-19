@@ -49,8 +49,12 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
             var model = new DetailsGroupVm
             {
                 Id = vm.Id,
-                Name = vm.Name
-            };
+                Name = vm.Name,
+                CourseName = "Course 1",
+                BeginigDate = DateTime.Now,
+                Students = new List<Models.Student.StudentVm> { new Models.Student.StudentVm { FirstName = "StudentFN", LastName = "TeacherLN" } },
+                Lectors = new List<Models.Lector.LectorVm> { new Models.Lector.LectorVm { FirstName = "LectorFN", LastName = "LectorLN" } }
+        };
             return View(model);
         }
 

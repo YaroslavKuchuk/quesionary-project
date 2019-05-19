@@ -18,5 +18,11 @@ namespace FinalProjectMVC.Areas.Admin.Models.Questions
 
         public List<MultichoiceAnswerVm> MultichoiceAnswers { get; set; }
         public List<TextAnswerVm> TextAnswers { get; set; }
+
+        public DetailsQuestionVm()
+        {
+            MultichoiceAnswers = new List<MultichoiceAnswerVm>();
+            TextAnswers = new List<TextAnswerVm>();
+        }
     }
 }

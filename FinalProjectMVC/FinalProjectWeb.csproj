@@ -136,9 +136,12 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LectorController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThemeController.cs" />
     <Compile Include="Areas\Admin\Models\Answers\MultichoiceAnswerVm.cs" />
     <Compile Include="Areas\Admin\Models\Answers\TextAnswerVm.cs" />
     <Compile Include="Areas\Admin\Models\Courses\CourseVm.cs" />
@@ -154,6 +157,7 @@
     <Compile Include="Areas\Admin\Models\Test\DetailsTestVm.cs" />
     <Compile Include="Areas\Admin\Models\Test\TestPassingVm.cs" />
     <Compile Include="Areas\Admin\Models\Test\TestVm.cs" />
+    <Compile Include="Areas\Admin\Models\Themes\DetailsThemeVm.cs" />
     <Compile Include="Areas\Admin\Models\Themes\ThemeVm.cs" />
     <Compile Include="Areas\Lecture\LectureAreaRegistration.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
@@ -209,6 +213,10 @@
     <Content Include="Areas\Admin\Views\Test\GetAll.cshtml" />
     <Content Include="Areas\Admin\Views\Test\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Test\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\GetAll.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\Details.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -251,6 +259,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Lector\" />
+    <Folder Include="Areas\Admin\Views\Student\" />
     <Folder Include="Areas\Lecture\Controllers\" />
     <Folder Include="Areas\Lecture\Models\" />
     <Folder Include="Areas\Lecture\Views\Shared\" />

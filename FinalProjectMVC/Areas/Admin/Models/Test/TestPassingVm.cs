@@ -11,7 +11,7 @@ namespace FinalProjectMVC.Areas.Admin.Models.Test
         public DateTime Date { get; set; }
 
         public string  StudentName { get; set; }
-        public string TeacherName { get; set; }
+        public string LectorName { get; set; }
         public string TestName { get; set; }
     }
 }

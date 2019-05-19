@@ -16,5 +16,11 @@ namespace FinalProjectMVC.Areas.Admin.Models.Modules
         public string TestName { get; set; }
         public virtual List<QuestionVm> Questions { get; set; }
         public virtual List<ThemeVm> Themes { get; set; }
+
+        public DetailsModuleVm()
+        {
+            Questions = new List<QuestionVm>();
+            Themes = new List<ThemeVm>();
+        }
     }
 }

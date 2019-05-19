@@ -1,6 +1,6 @@
 ﻿using FinalProjectMVC.Areas.Admin.Models.Groups;
 using FinalProjectMVC.Areas.Admin.Models.Modules;
-using FinalProjectMVC.Areas.Admin.Models.Teachers;
+using FinalProjectMVC.Areas.Admin.Models.Lector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace FinalProjectMVC.Areas.Admin.Models.Courses
 
         public string Name { get; set; }
 
-        public List<TeacherVm> teachersList { get; set; }
+        public List<LectorVm> lectorsList { get; set; }
 
         public List<ModuleVm> modulesList { get; set; }
 
@@ -22,9 +22,9 @@ namespace FinalProjectMVC.Areas.Admin.Models.Courses
 
         public DetailsCourseVm()
         {
-            teachersList = new List<TeacherVm> { new TeacherVm { FirstName = "TeacherFN", LastName = "TeacherLN"} };
-            modulesList = new List<ModuleVm> { new ModuleVm { Name = "Module 1"} };
-            groupsList = new List<GroupVm> { new GroupVm { Name = "Group 1"} };
+            lectorsList = new List<LectorVm>();
+            modulesList = new List<ModuleVm>();
+            groupsList = new List<GroupVm>();
         }
     }
 }

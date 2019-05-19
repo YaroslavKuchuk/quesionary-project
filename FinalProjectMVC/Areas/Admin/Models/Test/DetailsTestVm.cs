@@ -16,5 +16,12 @@ namespace FinalProjectMVC.Areas.Admin.Models.Test
         public List<ModuleVm> Modules { get; set; }
         public List<QuestionVm> Questions { get; set; }
         public List<TestPassingVm> TestPassings { get; set; }
+
+        public DetailsTestVm()
+        {
+            Modules = new List<ModuleVm>();
+            Questions = new List<QuestionVm>();
+            TestPassings = new List<TestPassingVm>();
+        }
     }
 }
