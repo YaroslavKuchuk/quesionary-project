@@ -57,7 +57,7 @@ namespace FinalProjectMVC.Areas.Admin.Controllers
                 "Pellentesque nec orci vitae nisl semper ultricies vitae ac justo. Etiam congue sit amet nisi sed commodo. Ut pretium interdum enim id vulputate. " +
                 "Etiam mattis mauris et purus viverra tempor. Donec facilisis faucibus risus et gravida. Etiam lobortis, ante a ultricies fermentum, " +
                 "metus metus pulvinar nulla, id iaculis tellus ipsum ut nisl. Maecenas ac nibh sit amet nisi blandit pulvinar at ac dolor."} },
-                TestPassings = new List<TestPassingVm> { new TestPassingVm { Id = 0, Date = DateTime.Now, StudentName = "Student1", TeacherName = "Lector 1", TestName = vm.Name} }
+                TestPassings = new List<TestPassingVm> { new TestPassingVm { Id = 0, Date = DateTime.Now, StudentName = "Student1", LectorName = "Lector 1", TestName = vm.Name} }
             };
             return View(model);
         }
