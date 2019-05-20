@@ -153,7 +153,7 @@
     <Compile Include="Areas\Admin\Models\Questions\DetailsQuestionVm.cs" />
     <Compile Include="Areas\Admin\Models\Questions\QuestionVm.cs" />
     <Compile Include="Areas\Admin\Models\Student\StudentVm.cs" />
-    <Compile Include="Areas\Admin\Models\Teachers\TeacherVm.cs" />
+    <Compile Include="Areas\Admin\Models\Lector\LectorVm.cs" />
     <Compile Include="Areas\Admin\Models\Test\DetailsTestVm.cs" />
     <Compile Include="Areas\Admin\Models\Test\TestPassingVm.cs" />
     <Compile Include="Areas\Admin\Models\Test\TestVm.cs" />
@@ -217,6 +217,7 @@
     <Content Include="Areas\Admin\Views\Theme\GetAll.cshtml" />
     <Content Include="Areas\Admin\Views\Theme\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Theme\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Lector\Index.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -259,7 +260,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Lector\" />
     <Folder Include="Areas\Admin\Views\Student\" />
     <Folder Include="Areas\Lecture\Controllers\" />
     <Folder Include="Areas\Lecture\Models\" />
