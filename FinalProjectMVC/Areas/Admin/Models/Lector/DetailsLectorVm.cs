@@ -14,9 +14,9 @@ namespace FinalProjectMVC.Areas.Admin.Models.Lector
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public virtual List<TestPassingVm> TestPassings { get; set; }
-        public virtual List<CourseVm> Courses { get; set; }
-        public virtual List<GroupVm> Groups { get; set; }
+        public List<TestPassingVm> TestPassings { get; set; }
+        public List<CourseVm> Courses { get; set; }
+        public List<GroupVm> Groups { get; set; }
 
         public DetailsLectorVm()
         {
