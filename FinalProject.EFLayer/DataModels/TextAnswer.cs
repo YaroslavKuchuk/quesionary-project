@@ -19,6 +19,7 @@ namespace FinalProject.EFLayer.DataModels
         public string Textbox { get; set; }
         public Nullable<int> IsCorrect { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public string TextBox { get; set; }
     
         public virtual Question Question { get; set; }
     }

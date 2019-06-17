@@ -1,0 +1,52 @@
+﻿@model FinalProjectMVC.Areas.Admin.Models.Test.DetailsTestVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetailsTestVm</h4>
+    <hr />
+        <h4>
+            @Html.DisplayNameFor(model => model.Name)
+        </h4>
+            @Html.DisplayFor(model => model.Name)
+        <h4>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </h4>
+            @Html.DisplayFor(model => model.CourseName)
+    <h4>Модули:</h4>
+    <ul>
+
+        @foreach (var item in Model.Modules)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+    <h4>Вопросы:</h4>
+    <ul>
+
+        @foreach (var item in Model.Questions)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+    <h4>?Завершенные тесты:</h4>
+    <ul>
+        @foreach (var item in Model.TestPassings)
+        {
+            <li>@item.TestName</li>
+            <li>@item.Date</li>
+            <li>@item.StudentName</li>
+            <li>@item.LectorName</li>
+            <br />
+        }
+    </ul>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "GetAll")
+</p>

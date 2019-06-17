@@ -1,0 +1,43 @@
+﻿@model FinalProjectMVC.Areas.Admin.Models.Lector.DetailsLectorVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details lector</h2>
+
+<div>
+    <hr />
+    <h4>@Html.DisplayNameFor(model => model.FirstName)</h4>
+        @Html.DisplayFor(model => model.FirstName)
+    <h4>@Html.DisplayNameFor(model => model.LastName)</h4>
+        @Html.DisplayFor(model => model.LastName)
+
+    <h4>Курсы</h4>
+    <ul>
+        @foreach (var item in Model.Courses)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+    <h4>Группы</h4>
+    <ul>
+        @foreach (var item in Model.Groups)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+    <h4>?Завершенные тесты</h4>
+    <ul>
+        @foreach (var item in Model.TestPassings)
+        {
+            <li>@item.Date</li>
+            <li>@item.StudentName</li>
+            <li>@item.TestName</li>
+        }
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "GetAll")
+</p>

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FinalProjectMVC.Areas.Admin.Models.Groups
+namespace FinalProjectMVC.Areas.Admin.Models.Themes
 {
-    public class CreateGroupVm
+    public class ThemeVm
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
